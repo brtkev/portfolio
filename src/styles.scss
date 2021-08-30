@@ -6,18 +6,22 @@
 
 body{
     scroll-behavior: smooth;
+    font-family: Arial, Helvetica, sans-serif;
 }
 $x-padding: 10vw;
 $y-padding: 20vh;
 
 $black-color: #222;
+$black-color-filter: invert(0%) sepia(0%) saturate(14%) hue-rotate(213deg) brightness(86%) contrast(73%);
+$black-color-light: #444;
 $white-color: #ddd;
 $primary-color: #24a;
 
 $white-letter: #fff;
 $white-letter-disabled: #888;
 
-$nav-font-size: 20px;
+$nav-font-size: calc(15px + .5vw);
+$home__title-font-size: calc(1.5em + 1vw);
 
 /* === Navegation === */
 
@@ -93,7 +97,7 @@ $nav-font-size: 20px;
 
     &__title{
         & .home__title-text{
-            font-size: calc(1.5em + 1vw);
+            font-size: $home__title-font-size;
         }
     }
 
@@ -113,10 +117,12 @@ $nav-font-size: 20px;
             
 
             &::after{
-                content: " ";
+                content:"";
                 position: absolute;
                 width: 100%;
                 height: 100%;
+                top: 0;
+                left: 0;
                 background-color: #ddda;
                 transition: all .3s linear;
                 
@@ -142,24 +148,80 @@ $nav-font-size: 20px;
 
 $project-image-size : 10vw;
 
+@mixin underline-border($width, $color) {
+    position:relative;
+    overflow: hidden;
+    &::before{
+        content:'';
+        position:absolute;
+        width:calc(100% + #{$width * 2});
+        height: $width;
+        background-color: $color;
+        bottom: 0;
+        // z-index: -1;
+    }
+}
+
+@mixin border-from-left($width, $color, $duration){
+    @include underline-border($width, $color);
+    &::before{
+        right: 100%;
+        transition: right $duration linear;
+    }
+    &:hover::before{
+        right: 0;
+    }
+}
+
+@mixin border-from-right($width, $color, $duration) {
+    @include underline-border($width, $color);
+    &::before{
+        left: 100%;
+        transition: left $duration linear;
+    }
+    &:hover::before{
+        left: 0;
+    }
+}
+
+@mixin border-from-center($width, $color, $duration){
+    @include underline-border($width, $color);
+    &::before{
+        transform: scaleX(0);
+        transition: all $duration ease-in-out;
+    }
+    &:hover::before{
+        transform: scaleX(1);
+    }
+}
+
 #project{
     width: 100%;
     display: flex;
     justify-content: center;
-    padding: $y-padding $x-padding;
+    align-items: center;
+    flex-direction: column;
+    padding: $y-padding/2 $x-padding;
+
+    &__title{
+        font-size: $home__title-font-size;
+        margin-bottom: $y-padding/2;
+    }
     
     &__grid-box{
         display: grid;
         grid-template-columns: repeat(3, 1fr);
         grid-auto-rows: 1fr;
-        gap: 10px;
+        row-gap: 20px;
+        column-gap: 40px;
         width: 100%;
         // justify-items: center;
 
         & .project__grid-item{
             list-style: none;
             position: relative;
-
+            box-shadow: 0px 0px 3px 1px $black-color-light;
+            transition: all 1s linear;
             &:hover > .project__image-cover{
                 visibility: visible;
             }
@@ -172,22 +234,55 @@ $project-image-size : 10vw;
                 left: 0;
                 background-color: #222a;
                 color: #ddd;
-                display: flex;justify-content: center;align-items: center;
                 visibility: hidden;
+                display: grid;
+                place-content: center;
+                place-items: center;
+                row-gap: 10%;
+                grid-template-areas: 
+                "text text text text"
+                "prev prev code code";
+                padding: 10%;
 
-                & p{
-                    &:hover{
-                        text-decoration: underline;
+                & .preview-icon, & .code-icon{
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    width: 50%;
+                    & img{
+                        cursor: pointer;
+                        width: 100%;
+                        filter: $black-color-filter;                        
                     }
-                    font-size: 24px;
-                    cursor: pointer;
                 }
+                & .preview-icon{
+                    @include border-from-right(2px, $black-color, .5s);
+                    grid-area: prev;
+                }
+                
+                & .code-icon{
+                    @include border-from-left(2px, $black-color, .5s);
+                    grid-area: code;
+                }
+
+                & .text-box{
+                    grid-area: text;
+                    display: flex;
+                    align-items: flex-end;
+                    & p{
+                        color: $white-color;
+                        // @include border-from-center(2px, $white-letter, .5s);
+                        text-decoration: underline;
+                        font-size: 24px;
+                    }
+                }
+
             }
 
             & .project__image{
                 width: 100%;
                 height: 100%;
-                object-fit: contain;
+                object-fit: fill;
 
                 
             }
@@ -196,30 +291,27 @@ $project-image-size : 10vw;
     }
 }
 
-#project__display-container{
-    position: fixed;
-    top: 15vh;
-    left: $x-padding;
-    height: 70vh;
-    width: 80%;
-    background-color: $black-color;
-    z-index: 100;
 
-    display: flex;
-    padding: 0 10%;
+#previewWindow{
+    position: fixed;
+    // width: 90vw;
+    // height: 90vh;
+    margin: 5vh 0;
+    top: 0;
+    left: 5%;
+    background-color: $black-color;
+    z-index: 10010;
+
+    border: 2px solid $black-color-light;
     border-radius: 15px;
 
-    & div{
-        flex: 1;
-    }
-    & #project__display-image-box{
-        display: flex;
-        align-items: center;
-        & img{
-            border-radius: 15px;
-            width: 100%;
-        }
-    }
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
+    padding: 5vh 5vh;
+
+    & img{
+        width: 80vw;
+    }
 }
-
