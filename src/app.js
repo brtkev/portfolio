@@ -102,40 +102,26 @@ document.body.onload = () => {
 }
 
 const insertProjectItems = () => {
-    let itemHTML = `
-    <li class="project__grid-item">
-        <img class="project__image" src="" alt="" >
-        <div class="project__image-cover">
-            <div class="text-box">
-                <p></p>
-            </div>
-            <a class="preview-icon" href="#"><img src="assets/preview-icon.png" alt="preview icon"></a>
-            <a class="code-icon" href="#"><img  src="assets/code-logo.png" alt="preview icon"></a>
-        </div>
-    </li>
-    `;
-    itemHTML = itemHTML.trim();
-
+    const listItemTemplate = document.querySelector('#project__grid-item').content.firstElementChild;
+    
     const projectsNodes = projects.map( ( project ) => {
-        const template = document.createElement('template');
-        template.insertAdjacentHTML('afterbegin', itemHTML);
+        const listItem = listItemTemplate.cloneNode(true);
 
-        let text = template.querySelector('.text-box');
+        let text = listItem.querySelector('.text-box');
         text.firstElementChild.insertAdjacentText('afterbegin', project.name)
-        let previewIcon = template.querySelector('.preview-icon');
+        let previewIcon = listItem.querySelector('.preview-icon');
         previewIcon.href = project.url;
-        let codeIcon = template.querySelector('.code-icon');
+        let codeIcon = listItem.querySelector('.code-icon');
         codeIcon.href = project.repo;
 
-        let image = template.querySelector('.project__image');
+        let image = listItem.querySelector('.project__image');
         image.src = project.display;
         image.alt = project.name;
         
         addTooltip(text, project.description);
         addTooltip(previewIcon, "go to Page");
         addTooltip(codeIcon, "go to Code");
-        
-        return template.firstElementChild;
+        return listItem;
     })
 
     const grid = document.getElementById("project__grid-box");

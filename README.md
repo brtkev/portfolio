@@ -1,3 +1,6 @@
+- [] home
+- [] projects
+- [] contact
 # portfolio
 front-end developer porfolio
 
@@ -5,7 +8,7 @@ WORK IN PROGRESS
 
 
 
-# positioning the tooltip of the project list items
+## positioning the tooltip of the project list items
 
 prooved to be kind of difficult at first but I managed to position it using:
 event's .pageX, .pageY 
