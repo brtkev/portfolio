@@ -20,7 +20,7 @@ at the body is way better for what I wanted because I could just use the target 
 plus its width/height to position the tooltip in the way I wanted.
 
 
-```
+```javascript
 tooltip.style.left = element.offsetLeft + element.offsetWidth + 'px';
 tooltip.style.top = element.offsetTop + element.offsetHeight + 'px';
 
