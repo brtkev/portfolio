@@ -3,43 +3,50 @@ const projects = [
         'name' : 'google clone',
         'url' : '#',
         'repo' : '#',
-        'display' : 'assets/google-clone.png'
+        'display' : 'assets/google-clone.png',
+        'description' : 'a google clone I made to train my DOM manipulation skills'
     },
     {
         'name' : 'google clone',
         'url' : '#',
         'repo' : '#',
-        'display' : 'assets/google-clone.png'
+        'display' : 'assets/google-clone.png',
+        'description' : 'a google clone I made to train my DOM manipulation skills, as well as html/css'
     },
     {
         'name' : 'google clone',
         'url' : '#',
         'repo' : '#',
-        'display' : 'assets/google-clone.png'
+        'display' : 'assets/google-clone.png',
+        'description' : 'a google clone I made to train my DOM manipulation skills, as well as html/css'
     },
     {
         'name' : 'google clone',
         'url' : '#',
         'repo' : '#',
-        'display' : 'assets/google-clone.png'
+        'display' : 'assets/google-clone.png',
+        'description' : 'a google clone I made to train my DOM manipulation skills, as well as html/css'
     },
     {
         'name' : 'google clone',
         'url' : '#',
         'repo' : '#',
-        'display' : 'assets/google-clone.png'
+        'display' : 'assets/google-clone.png',
+        'description' : 'a google clone I made to train my DOM manipulation skills, as well as html/css'
     },
     {
         'name' : 'google clone',
         'url' : '#',
         'repo' : '#',
-        'display' : 'assets/google-clone.png'
+        'display' : 'assets/google-clone.png',
+        'description' : 'a google clone I made to train my DOM manipulation skills, as well as html/css'
     },
     {
         'name' : 'google clone',
         'url' : '#',
         'repo' : '#',
-        'display' : 'assets/google-clone.png'
+        'display' : 'assets/google-clone.png',
+        'description' : 'a google clone I made to train my DOM manipulation skills, as well as html/css'
     },
 ]
 
@@ -56,6 +63,36 @@ const addEventListenerToArray = ( array, type, callable) => {
     }
 }
 
+/**
+ * 
+ * @param {Element} element 
+ * @param {string} msg 
+ */
+const addTooltip = (element, msg) => {
+    element.addEventListener('mouseenter', (ev) => {
+
+        let tooltip = document.createElement('div');
+        tooltip.classList.add('tooltip');
+        tooltip.insertAdjacentHTML('afterbegin', `<p>${msg}</p>`);
+
+        tooltip.style.left = element.offsetLeft + element.offsetWidth + 'px';
+        tooltip.style.top = element.offsetTop + element.offsetHeight + 'px';
+
+        tooltip.style.visibility = "hidden";
+        element.insertAdjacentElement('beforebegin', tooltip);
+
+        setTimeout(() => {
+            tooltip.style.visibility = "visible";
+        }, 500);
+    });
+
+    element.addEventListener('mouseleave', (ev) => {
+        
+        let tooltip = element.parentElement.querySelector(".tooltip");
+        if(tooltip) tooltip.remove();
+            
+    });
+}
 
 document.body.onload = () => {
     
@@ -83,13 +120,21 @@ const insertProjectItems = () => {
         const template = document.createElement('template');
         template.insertAdjacentHTML('afterbegin', itemHTML);
 
-        template.querySelector('.text-box p').insertAdjacentText('afterbegin', project.name);
-        template.querySelector('.preview-icon').href = project.url;
-        template.querySelector('.code-icon').href = project.repo;
+        let text = template.querySelector('.text-box');
+        text.firstElementChild.insertAdjacentText('afterbegin', project.name)
+        let previewIcon = template.querySelector('.preview-icon');
+        previewIcon.href = project.url;
+        let codeIcon = template.querySelector('.code-icon');
+        codeIcon.href = project.repo;
+
         let image = template.querySelector('.project__image');
         image.src = project.display;
         image.alt = project.name;
-
+        
+        addTooltip(text, project.description);
+        addTooltip(previewIcon, "go to Page");
+        addTooltip(codeIcon, "go to Code");
+        
         return template.firstElementChild;
     })
 
