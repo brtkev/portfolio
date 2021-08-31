@@ -1,4 +1,4 @@
-- [ ] home
+- [o] home
 - [x] projects
 - [ ] contact
 # portfolio
