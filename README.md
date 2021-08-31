@@ -1,5 +1,5 @@
 - [ ] home
-- [ ] projects
+- [x] projects
 - [ ] contact
 # portfolio
 front-end developer porfolio
