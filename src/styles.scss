@@ -16,6 +16,7 @@ $black-color-filter: invert(0%) sepia(0%) saturate(14%) hue-rotate(213deg) brigh
 $black-color-light: #444;
 $white-color: #ddd;
 $primary-color: #24a;
+$primary-color-focus: #28a;
 
 $white-letter: #fff;
 $white-letter-disabled: #888;
@@ -24,6 +25,7 @@ $nav-font-size: calc(15px + .5vw);
 $home__title-font-size: calc(1.5em + 1vw);
 $home__about-font-size: calc(1.5em + 1vw);
 $about-font-size: calc(.5em + 1vw);
+$contact-label-fs: calc(1em + .5vw);
 
 /* === Navegation === */
 
@@ -247,7 +249,7 @@ $project-image-size : 10vw;
         & .project__grid-item{
             list-style: none;
             position: relative;
-            box-shadow: 0px 0px 3px 1px $black-color-light;
+            box-shadow: 0px 0px 3px 1px $primary-color;
             transition: all 1s linear;
             &:hover > .project__image-cover{
                 visibility: visible;
@@ -314,6 +316,115 @@ $project-image-size : 10vw;
 }
 
 
+#contact{
+    width: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: $y-padding/2 0;
+    background: $white-color;
+}
+
+#contact-content{
+    background-color: $black-color;
+    width: calc(400px + 30vw);
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 5vh 5vw;
+    & #title{
+        color: $white-letter;
+        font-size: $home__about-font-size;
+        margin-bottom: 2.5vh;
+    }
+
+    & #contact-icons{
+        width: 100%;
+        display: flex;
+        justify-content: space-evenly;
+        & .icon-container{
+            width: 5vw;
+            & img{
+                width: 100%;
+            }
+        }
+        margin-bottom: 10px;
+    }
+
+    & #separator-container{
+        display: flex;
+        position: relative;
+        justify-content: center;
+        align-items: center;
+        margin: 2.5vh 0;
+        width: 100%;
+        & p{
+            color: $white-letter-disabled;
+            margin: 0 10px;
+        }
+        & .separator{
+            
+            width: 100%;
+            height:1px;
+            background-color: $black-color-light;
+        }
+    }
+
+
+    & .form{
+        width: 100%;
+        padding: 0 2vw;
+
+        & .form-input{
+            margin: 2.5vh 0;
+            color: #fff;
+            width: 100%;
+            padding: calc(7px + .5vw);
+            border: none;
+            border-bottom: 3px solid $primary-color;
+            background-color: transparent;
+            font-size: $about-font-size;
+            &::placeholder{
+                font-size: $about-font-size;
+            }
+
+            &:focus{
+                outline: none;
+                border-bottom: 3px solid $primary-color-focus;
+                background-color: #333;
+            }
+
+            &[type="submit"]{
+                background-color: $primary-color;
+                color: #000;
+                font-weight: 600;
+                border-bottom: none;
+                padding: 12px;
+                cursor: pointer;
+    
+                &:hover{
+                    background-color: $primary-color-focus;
+                }
+            }
+        }
+        & label{
+            color: $white-letter;
+            font-size: $about-font-size;
+        }
+
+        & textarea{
+            min-height: 30vh;
+            resize: none;
+        }
+    }
+}
+
+
+
+
+
 .tooltip{
     position: absolute;
     width: max-content;
@@ -326,3 +437,4 @@ $project-image-size : 10vw;
     border-radius: 5px;
     z-index: 10001;
 }
+
