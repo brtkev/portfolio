@@ -4,19 +4,26 @@
     box-sizing: border-box;
 }
 
+html{
+    scroll-behavior: smooth;
+}
+
 body{
     scroll-behavior: smooth;
     font-family: Arial, Helvetica, sans-serif;
 }
+
 $x-padding: 10vw;
 $y-padding: 20vh;
 
-$black-color: #222;
+$black-color: #111;
 $black-color-filter: invert(0%) sepia(0%) saturate(14%) hue-rotate(213deg) brightness(86%) contrast(73%);
 $black-color-light: #444;
 $white-color: #ddd;
+$white-color-filter : invert(100%) sepia(3%) saturate(115%) hue-rotate(46deg) brightness(112%) contrast(87%);
 $primary-color: #24a;
 $primary-color-focus: #28a;
+$project-background: #002;
 
 $white-letter: #fff;
 $white-letter-disabled: #888;
@@ -26,6 +33,19 @@ $home__title-font-size: calc(1.5em + 1vw);
 $home__about-font-size: calc(1.5em + 1vw);
 $about-font-size: calc(.5em + 1vw);
 $contact-label-fs: calc(1em + .5vw);
+
+
+
+::-webkit-scrollbar{
+    background: $black-color;
+    // background: linear-gradient( $black-color 10%, $white-color 100%);
+    width: 10px;
+}
+
+::-webkit-scrollbar-thumb{
+    // border-radius: 30px;
+    background-color: $primary-color
+}
 
 /* === Navegation === */
 
@@ -63,13 +83,6 @@ $contact-label-fs: calc(1em + .5vw);
 .list__item{
     list-style: none;
     
-    button{
-        color: $white-letter;
-        font-size: $nav-font-size;
-        @extend %button-setup;
-        margin: 0 3vw;
-        cursor: pointer;
-    }
     
     &:first-child{
         button{
@@ -79,6 +92,16 @@ $contact-label-fs: calc(1em + .5vw);
     &:not(:first-child){
         button{
             color: $white-letter-disabled;
+        }
+    }
+    button{
+        color: $white-letter;
+        font-size: $nav-font-size;
+        @extend %button-setup;
+        margin: 0 3vw;
+        cursor: pointer;
+        &:hover{
+            color: $primary-color;
         }
     }
     
@@ -97,10 +120,14 @@ $contact-label-fs: calc(1em + .5vw);
     justify-content: flex-start;
     align-items: center;
     background: $white-color;
-    
+    background-image: url("/assets/city.jpg");
 
     &__title{
+        background-color: $black-color;
+        padding: 10px;
+        border-radius: 15px;
         & .home__title-text{
+            color: $white-letter;
             font-size: $home__title-font-size;
         }
     }
@@ -143,30 +170,19 @@ $contact-label-fs: calc(1em + .5vw);
             margin: 0 calc(1em + 1vw);
             display: flex;
             align-items: center;
-            transition: transform .3s linear;
-            
-
-            &::after{
-                content:"";
-                position: absolute;
-                width: 100%;
-                height: 100%;
-                top: 0;
-                left: 0;
-                background-color: #ddda;
-                transition: all .3s linear;
-                
-            }
-            &:hover::after{
-                background-color: #ddd0;
-            }
-
+            transition: all .3s linear;
+        
             &:hover{
                 transform: scale(1.1);
             }
 
             & img{
                 width: calc(2em + 7vw);
+                // filter: $black-color-filter;
+                
+            }
+            &:hover > img{
+                filter: none;
             }
         }
 
@@ -231,10 +247,12 @@ $project-image-size : 10vw;
     align-items: center;
     flex-direction: column;
     padding: $y-padding/2 $x-padding;
+    background-color: $project-background;
 
     &__title{
         font-size: $home__title-font-size;
         margin-bottom: $y-padding/2;
+        color:$white-letter;
     }
     
     &__grid-box{
@@ -322,8 +340,8 @@ $project-image-size : 10vw;
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: $y-padding/2 0;
-    background: $white-color;
+    // padding: $y-padding/2 0;
+    background: $black-color;
 }
 
 #contact-content{
@@ -344,10 +362,24 @@ $project-image-size : 10vw;
         width: 100%;
         display: flex;
         justify-content: space-evenly;
+        
+
         & .icon-container{
             width: 5vw;
-            & img{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            & img, svg{
+                cursor: pointer;
                 width: 100%;
+                height: 100%;
+                
+                filter: $white-color-filter;
+                transition: all .3s linear;
+
+                &:hover{
+                    transform: scale(1.1);
+                }
             }
         }
         margin-bottom: 10px;

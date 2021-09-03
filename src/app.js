@@ -63,6 +63,7 @@ const addEventListenerToArray = ( array, type, callable) => {
     }
 }
 
+
 /**
  * 
  * @param {Element} element 
