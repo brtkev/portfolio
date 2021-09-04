@@ -102,7 +102,68 @@ document.body.onload = () => {
     let projectTitleImage = document.querySelector('#project #title img');
     addTooltip(projectTitleImage, 'Portfolio repo');
 
-    let homeButton = document.querySelector('#homeButton');
-    console.log(homeButton)
+    navBarEventListeners();
+
 }
 
+const navBarEventListeners = () => {
+    let homeButton = document.getElementById('homeButton');
+    homeButton.addEventListener('click', () => scrollToElement(document.getElementById('home'), 100))
+    
+    let aboutButton = document.getElementById('aboutButton');
+    console.log(window.innerHeight * 0.1)
+    aboutButton.addEventListener('click', () => scrollToElement(document.getElementById('tech-container'), 100))
+
+    let portfolioButton = document.getElementById('portfolioButton');
+    portfolioButton.addEventListener('click', () => scrollToElement(document.getElementById('project'), 100))
+
+    let contactButton = document.getElementById('contactButton');
+    contactButton.addEventListener('click', () => scrollToElement(document.getElementById('contact'), 100));
+}
+
+function getElementBodyOffsetY(element){
+    return element.getBoundingClientRect().top + document.documentElement.scrollTop;
+}
+
+const intervalSpeed = 15;
+
+function scrollToElement(element, scrollDuration){
+    y = validateY(getElementBodyOffsetY(element) - document.getElementById('nav').offsetHeight);
+    let scrollSteps = getScrollSteps(scrollDuration)
+    let scrollStepSize = getScrollStepSize(y, getScrollDirection(y), scrollSteps);
+
+    toggleNavBarButtons();
+    scrollInterval(y, scrollStepSize, scrollSteps);
+    toggleNavBarButtons();
+    
+}
+
+let scrollInterval = (y, scrollStepSize, scrollSteps ) =>{
+    let i = 0,interval = setInterval( () => {
+        if (i < scrollSteps) window.scrollBy( 0, scrollStepSize );
+        else clearInterval(interval);
+        i++;
+    },intervalSpeed);
+} 
+
+const toggleNavBarButtons = () => {
+    let buttons = document.getElementsByClassName('list__item__button');
+    for(let i = 0; i < buttons.length; i++){
+        buttons[i].disabled = !buttons[i].disabled;
+    }
+}
+
+const getScrollSteps = scrollDuration => (scrollDuration / intervalSpeed);
+const getScrollStepSize = (y, direction, scrollSteps) => direction * Math.abs(y - window.scrollY) / scrollSteps;
+
+const validateY = (y) => {
+    if(y === 0) return 1 // cannot be 0
+    else if(y > document.body.scrollHeight - window.innerHeight)
+        return document.body.scrollHeight - window.innerHeight; //cannot be higher than
+    else return y 
+}
+
+function getScrollDirection(y){
+    if(window.scrollY > y ) return -1
+    else return 1;
+}
