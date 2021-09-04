@@ -1,4 +1,4 @@
-- [] navegation
+- [ ] navegation
 - [X] home
 - [X] portfolio
 - [X] contact
