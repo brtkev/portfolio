@@ -6,9 +6,9 @@
 front-end developer porfolio
 
 ## to do
-- [] update states of navegation's buttons
+- [ ] update states of navegation's buttons when scrolling
 
-## positioning the tooltip of the project list items
+#### positioning the tooltip of the project list items
 
 prooved to be kind of difficult at first but I managed to position it using:
 event's .pageX, .pageY 
@@ -29,7 +29,7 @@ element.insertAdjacentElement('beforebegin', tooltip);
 
 >this way the tooltip would never get in the way of the hovered element.
 
-## smooth scrolling on nav buttons' click
+### smooth scrolling on nav buttons' click
 
 at first I found a quick [solution](https://stackoverflow.com/a/52478645/16828543) investigating on google.
 
@@ -37,7 +37,8 @@ with a little of modification it would do what I needed but not what I wanted.
 
 then I found out a way to consistenly get where an element was located relative to the body:
 ```javascript
-const getElementBodyOffsetHeight = (element) => element.getBoundingClientRect().top + document.documentElement.scrollTop;
+const getElementBodyOffsetHeight = (element) 
+=> element.getBoundingClientRect().top + document.documentElement.scrollTop;
 ```
 
 after that I started to modify the original solution I got and molded it into something that would fit better and more efficiently what I was after
