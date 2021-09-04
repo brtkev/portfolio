@@ -8,7 +8,7 @@ front-end developer porfolio
 ## to do
 - [ ] update states of navegation's buttons when scrolling
 
-#### positioning the tooltip of the project list items
+## positioning the tooltip of the project list items
 
 prooved to be kind of difficult at first but I managed to position it using:
 event's .pageX, .pageY 
@@ -29,7 +29,7 @@ element.insertAdjacentElement('beforebegin', tooltip);
 
 >this way the tooltip would never get in the way of the hovered element.
 
-### smooth scrolling on nav buttons' click
+## smooth scrolling on nav buttons' click
 
 at first I found a quick [solution](https://stackoverflow.com/a/52478645/16828543) investigating on google.
 
