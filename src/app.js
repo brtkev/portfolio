@@ -121,24 +121,21 @@ const navBarEventListeners = () => {
     contactButton.addEventListener('click', () => scrollToElement(document.getElementById('contact'), 100));
 }
 
-function getElementBodyOffsetY(element){
-    return element.getBoundingClientRect().top + document.documentElement.scrollTop;
-}
+const getElementBodyOffsetHeight = (element) => element.getBoundingClientRect().top + document.documentElement.scrollTop;
 
 const intervalSpeed = 15;
 
-function scrollToElement(element, scrollDuration){
-    y = validateY(getElementBodyOffsetY(element) - document.getElementById('nav').offsetHeight);
-    let scrollSteps = getScrollSteps(scrollDuration)
-    let scrollStepSize = getScrollStepSize(y, getScrollDirection(y), scrollSteps);
+const scrollToElement = (element, scrollDuration) => {
+    const height = validateHeight(getElementBodyOffsetHeight(element) - document.getElementById('nav').offsetHeight);
+    const scrollSteps = getScrollSteps(scrollDuration)
+    const scrollStepSize = getScrollStepSize(height, getScrollDirection(height), scrollSteps);
 
     toggleNavBarButtons();
-    scrollInterval(y, scrollStepSize, scrollSteps);
+    scrollInterval(scrollStepSize, scrollSteps);
     toggleNavBarButtons();
-    
 }
 
-let scrollInterval = (y, scrollStepSize, scrollSteps ) =>{
+const scrollInterval = (scrollStepSize, scrollSteps ) =>{
     let i = 0,interval = setInterval( () => {
         if (i < scrollSteps) window.scrollBy( 0, scrollStepSize );
         else clearInterval(interval);
@@ -154,16 +151,16 @@ const toggleNavBarButtons = () => {
 }
 
 const getScrollSteps = scrollDuration => (scrollDuration / intervalSpeed);
-const getScrollStepSize = (y, direction, scrollSteps) => direction * Math.abs(y - window.scrollY) / scrollSteps;
+const getScrollStepSize = (height, direction, scrollSteps) => direction * Math.abs(height - window.scrollY) / scrollSteps;
 
-const validateY = (y) => {
-    if(y === 0) return 1 // cannot be 0
-    else if(y > document.body.scrollHeight - window.innerHeight)
+const validateHeight = (height) => {
+    if(height === 0) return 1 // cannot be 0
+    else if(height > document.body.scrollHeight - window.innerHeight)
         return document.body.scrollHeight - window.innerHeight; //cannot be higher than
-    else return y 
+    else return height 
 }
 
-function getScrollDirection(y){
-    if(window.scrollY > y ) return -1
+function getScrollDirection(height){
+    if(window.scrollY > height ) return -1
     else return 1;
 }

@@ -1,12 +1,12 @@
-- [o] home
-- [x] projects
-- [ ] contact
+- [] navegation
+- [X] home
+- [X] portfolio
+- [X] contact
 # portfolio
 front-end developer porfolio
 
-WORK IN PROGRESS
-
-
+## to do
+- [] update states of navegation's buttons
 
 ## positioning the tooltip of the project list items
 
@@ -27,4 +27,37 @@ tooltip.style.top = element.offsetTop + element.offsetHeight + 'px';
 element.insertAdjacentElement('beforebegin', tooltip);
 ```
 
-this way the tooltip would never get in the way of the hovered element.
+>this way the tooltip would never get in the way of the hovered element.
+
+## smooth scrolling on nav buttons' click
+
+at first I found a quick [solution](https://stackoverflow.com/a/52478645/16828543) investigating on google.
+
+with a little of modification it would do what I needed but not what I wanted.
+
+then I found out a way to consistenly get where an element was located relative to the body:
+```javascript
+const getElementBodyOffsetHeight = (element) => element.getBoundingClientRect().top + document.documentElement.scrollTop;
+```
+
+after that I started to modify the original solution I got and molded it into something that would fit better and more efficiently what I was after
+
+- get the height of the element
+- get the amount of steps in an interval of time
+- get the size of each step using the height and current location of the window
+- and iterate the size, the amount of steps
+
+```javascript
+const scrollToElement = (element, scrollDuration) => {
+    const height = validateHeight(getElementBodyOffsetHeight(element) - document.getElementById('nav').offsetHeight);
+    const scrollSteps = getScrollSteps(scrollDuration)
+    const scrollStepSize = getScrollStepSize(height, getScrollDirection(height), scrollSteps);
+
+    toggleNavBarButtons();
+    scrollInterval(scrollStepSize, scrollSteps);
+    toggleNavBarButtons();
+}
+```
+
+>at first I wasn't going for a iterate over a fixed amount of steps depending on the height
+>but at some point during trail and error, I realized it was a better way to do it
