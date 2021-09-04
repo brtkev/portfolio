@@ -4,7 +4,7 @@
 - [X] contact
 - [ ] update states of navegation's buttons when scrolling
 # portfolio
-front-end developer porfolio
+front-end developer [porfolio](https://brtkev.github.io/portfolio/)
 
 ## positioning the tooltip of the project list items
 
