@@ -23,6 +23,7 @@ $white-color: #ddd;
 $white-color-filter : invert(100%) sepia(3%) saturate(115%) hue-rotate(46deg) brightness(112%) contrast(87%);
 $primary-color: #24a;
 $primary-color-focus: #28a;
+$home-background: #104;
 $project-background: #002;
 
 $white-letter: #fff;
@@ -111,6 +112,7 @@ $contact-label-fs: calc(1em + .5vw);
 /* === home === */
 
 #home{
+    position: relative;
     width: 100%;
     // height: 90vh;
     display: flex;
@@ -119,16 +121,23 @@ $contact-label-fs: calc(1em + .5vw);
     padding-top: $y-padding;
     justify-content: flex-start;
     align-items: center;
-    background: $white-color;
-    background-image: url("/assets/projects/spense-page.png");
+    background: $home-background;
+    // background-image: url("/assets/city.jpg");
     // background-image: url("https://lh3.googleusercontent.com/OC0O3tfe5OLQRXRKGFuouqGv1fhRPCi6kxhM4u4KBYH905e0W7il6YdoQvBM0Fw6lGXfdHA2wzrjrMhNZo7drDhQBU4monolxx7kYzrHerTE15vHI4-4Lz4WyOAimrj66buQW_cJG-v2eaeDfjfQUYi8xeRXRhunCGVVW6jfYKY92bzcbjG2xLcNFOZPl1Z6QSWO2u0rltkiPR4CNR-cW074gRiqMS6Kmr2i87Xmy-K2VKQcNPGSJpmKpKWO0ShyBs4X4FYcEk17eo6u_9-ogBNU9Rksdaavo3wkSNIpuAmzkA5seN8Sdwlm3450J5UzGH_GFD7fJ1HFLTHM_x2woMRwYJyg44akeXiOJHhTnoponkmhnGpW02rhVoGqhR6DtvnoryhylE8GiW6FdD_wkJQ6yFXUqP75mK7YwFw7hl4raEvLMW2_Vpn9x4V6JKGbwYcexw6pFeMXsmiawN2lkqfolx0ENCIGaz2OqfmFq16I1K4gsXMioM9lZdda086SFeSVK0-ll0qKKIWICRDJCGnbZ1Nd5XabNEMKCV7f1g42OvhtH-Lu4FYTdFylzdr9qr46tYGh7cDAj9bzQS7CndXwQDG2nCIHOU7wHJxYqhPxU8leC9z0W_DcrAC8ZPrWm9EZwk6XQ0b4hv6wwkSNuWjMni3pWD6RjugG0OlFt9d_GAdcR9DlRloY3Se5QSQXk1USnxl1g7gk9w662OS2rQ=w1188-h668-no?authuser=0");
     // background-repeat: no-repeat;
     // background-size: contain;
-    
+    &-background{
+        position: absolute;
+        top: 0;
+        height: 100%;
+        z-index: 0;
+    }
+
     &__title{
         background-color: $black-color;
         padding: 10px;
         border-radius: 15px;
+        z-index: 10;
         & .home__title-text{
             color: $white-letter;
             font-size: $home__title-font-size;
@@ -136,6 +145,7 @@ $contact-label-fs: calc(1em + .5vw);
     }
 
     & #about{
+        z-index: 2;
         background-color: $black-color;
         border-radius: 15px;
         padding: 5vh 0;
