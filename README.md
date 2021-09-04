@@ -1,12 +1,10 @@
-- [ ] navegation
+- [X] navegation
 - [X] home
 - [X] portfolio
 - [X] contact
+- [ ] update states of navegation's buttons when scrolling
 # portfolio
 front-end developer porfolio
-
-## to do
-- [ ] update states of navegation's buttons when scrolling
 
 ## positioning the tooltip of the project list items
 
