@@ -2,6 +2,7 @@
 <html lang="en">
 
 <head>
+    <link  rel="icon"   href="assets/code-logo.png" type="image/png"/>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,7 +13,7 @@
 <body>
     <nav id="nav">
         <ul id="nav__list">
-            <li class="list__item"><button class="list__item__button">Home</button></li>
+            <li class="list__item"><button class="list__item__button" id="homeButton">Home</button></li>
             <li class="list__item"><button class="list__item__button">Projects</button></li>
             <li class="list__item"><button class="list__item__button">Contact</button></li>
         </ul>
@@ -50,10 +51,12 @@
     </section>
     <section id="project">
         <div id="title">
-            <h1 id="project__title">
-                Projects!
+            <h1>
+                Portfolio
             </h1>
-            <!-- <div class="icon-container"><img src="./assets/github-logo.png" alt="twitter icon"></div> -->
+            <a href="https://github.com/brtkev/portfolio" target="_blank" rel="noopener noreferrer">
+                <img src="./assets/github-logo.png" alt="twitter icon">
+            </a>
         </div>
         <ul id="project__grid-box">
             <template id="project__grid-item">

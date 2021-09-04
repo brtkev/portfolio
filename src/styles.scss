@@ -248,12 +248,28 @@ $project-image-size : 10vw;
     flex-direction: column;
     padding: $y-padding/2 $x-padding;
     background-color: $project-background;
-
-    &__title{
-        font-size: $home__title-font-size;
+    & #title{
+        display: flex;
+        align-items: center;
         margin-bottom: $y-padding/2;
-        color:$white-letter;
+        h1{
+            font-size: $home__title-font-size;
+            color:$white-letter;
+            margin-right: calc(1vw + 1em);
+        }
+    
+        & img{
+            height: calc(calc(1.5em + 1vw) * 2);
+            filter: $white-color-filter;
+            cursor: pointer;
+            transition: all .3s linear;
+
+            &:hover{
+                transform: scale(1.1);
+            }
+        }
     }
+
     
     &__grid-box{
         display: grid;
@@ -470,5 +486,7 @@ $project-image-size : 10vw;
     color: $white-letter;
     border-radius: 5px;
     z-index: 10001;
+
+    border: 1px solid $black-color-light;
 }
 

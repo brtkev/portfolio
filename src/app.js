@@ -1,8 +1,8 @@
 const projects = [
     {
         'name' : 'google clone',
-        'url' : '#',
-        'repo' : '#',
+        'url' : 'https://brtkev.github.io/JsMin/google-clone/',
+        'repo' : 'https://github.com/brtkev/JsMin/tree/main/google-clone',
         'display' : 'assets/projects/google-clone.png',
         'description' : 'a google clone I made to train my DOM manipulation skills'
     },
@@ -10,44 +10,16 @@ const projects = [
         'name' : 'Spense',
         'url' : 'https://brtkev.github.io/spense-homepage/',
         'repo' : 'https://github.com/brtkev/spense-homepage',
-        'display' : 'assets/projects/spense.png',
+        'display' : 'assets/projects/spense-page.png',
         'description' : 'Landing page of spense. made using html/css, 100% responsive'
     },
     {
         'name' : 'Fiber',
-        'url' : '#',
-        'repo' : '#',
-        'display' : 'assets/projects/google-clone.png',
+        'url' : 'https://brtkev.github.io/Fiber-landing-page/',
+        'repo' : 'https://github.com/brtkev/Fiber-landing-page',
+        'display' : 'assets/projects/fiber-page.png',
         'description' : 'this a really sweet landing page of fiber made with React, 100% reponsive'
-    },
-    {
-        'name' : 'google clone',
-        'url' : '#',
-        'repo' : '#',
-        'display' : 'assets/projects/google-clone.png',
-        'description' : 'a google clone I made to train my DOM manipulation skills, as well as html/css'
-    },
-    {
-        'name' : 'google clone',
-        'url' : '#',
-        'repo' : '#',
-        'display' : 'assets/projects/google-clone.png',
-        'description' : 'a google clone I made to train my DOM manipulation skills, as well as html/css'
-    },
-    {
-        'name' : 'google clone',
-        'url' : '#',
-        'repo' : '#',
-        'display' : 'assets/projects/google-clone.png',
-        'description' : 'a google clone I made to train my DOM manipulation skills, as well as html/css'
-    },
-    {
-        'name' : 'google clone',
-        'url' : '#',
-        'repo' : '#',
-        'display' : 'assets/projects/google-clone.png',
-        'description' : 'a google clone I made to train my DOM manipulation skills, as well as html/css'
-    },
+    }
 ]
 
 /**
@@ -95,13 +67,6 @@ const addTooltip = (element, msg) => {
     });
 }
 
-document.body.onload = () => {
-    
-    insertProjectItems();
-    const textImageCovers = document.querySelectorAll('.preview-icon');
-    addEventListenerToArray(textImageCovers, 'click', () => console.log("uwu"));
-}
-
 const insertProjectItems = () => {
     const listItemTemplate = document.querySelector('#project__grid-item').content.firstElementChild;
     
@@ -128,5 +93,16 @@ const insertProjectItems = () => {
     const grid = document.getElementById("project__grid-box");
     grid.append(...projectsNodes);
 
-
 }
+
+
+document.body.onload = () => {
+    
+    insertProjectItems();
+    let projectTitleImage = document.querySelector('#project #title img');
+    addTooltip(projectTitleImage, 'Portfolio repo');
+
+    let homeButton = document.querySelector('#homeButton');
+    console.log(homeButton)
+}
+
