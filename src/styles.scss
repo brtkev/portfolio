@@ -282,44 +282,46 @@ $project-image-size : 10vw;
                 background-color: #222a;
                 color: #ddd;
                 visibility: hidden;
-                display: grid;
-                place-content: center;
-                place-items: center;
-                row-gap: 10%;
-                grid-template-areas: 
-                "text text text text"
-                "prev prev code code";
-                padding: 10%;
 
-                & .preview-icon, & .code-icon{
-                    display: flex;
-                    justify-content: center;
-                    align-items: center;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+
+                & .link-box{
                     width: 50%;
-                    & img{
-                        cursor: pointer;
-                        width: 100%;
-                        filter: $black-color-filter;                        
+                    display: flex;
+                    justify-content: space-evenly;
+                    margin-top: 5%;
+
+                    & .preview-icon, & .code-icon{
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        width: 20%;
+                        & img{
+                            cursor: pointer;
+                            width: 100%;
+                            filter: $white-color-filter;                        
+                        }
                     }
-                }
-                & .preview-icon{
-                    @include border-from-right(2px, $black-color, .5s);
-                    grid-area: prev;
-                }
-                
-                & .code-icon{
-                    @include border-from-left(2px, $black-color, .5s);
-                    grid-area: code;
+                    & .preview-icon{
+                        @include border-from-right(2px, $white-color, .5s);
+                    }
+                    
+                    & .code-icon{
+                        @include border-from-left(2px, $white-color, .5s);
+                    }
                 }
 
                 & .text-box{
-                    grid-area: text;
+                    grid-column: 1 / 3;
                     display: flex;
                     align-items: flex-end;
                     & p{
                         color: $white-color;
                         text-decoration: underline;
-                        font-size: 24px;
+                        font-size: $contact-label-fs;
                     }
                 }
             }
@@ -333,6 +335,8 @@ $project-image-size : 10vw;
     }
 }
 
+
+/* === Contact/footer === */
 
 #contact{
     width: 100%;
@@ -453,9 +457,7 @@ $project-image-size : 10vw;
     }
 }
 
-
-
-
+/* === tooltip === */
 
 .tooltip{
     position: absolute;

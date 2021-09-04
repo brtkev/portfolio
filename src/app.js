@@ -3,49 +3,49 @@ const projects = [
         'name' : 'google clone',
         'url' : '#',
         'repo' : '#',
-        'display' : 'assets/google-clone.png',
+        'display' : 'assets/projects/google-clone.png',
         'description' : 'a google clone I made to train my DOM manipulation skills'
     },
     {
+        'name' : 'Spense',
+        'url' : 'https://brtkev.github.io/spense-homepage/',
+        'repo' : 'https://github.com/brtkev/spense-homepage',
+        'display' : 'assets/projects/spense.png',
+        'description' : 'Landing page of spense. made using html/css, 100% responsive'
+    },
+    {
+        'name' : 'Fiber',
+        'url' : '#',
+        'repo' : '#',
+        'display' : 'assets/projects/google-clone.png',
+        'description' : 'this a really sweet landing page of fiber made with React, 100% reponsive'
+    },
+    {
         'name' : 'google clone',
         'url' : '#',
         'repo' : '#',
-        'display' : 'assets/google-clone.png',
+        'display' : 'assets/projects/google-clone.png',
         'description' : 'a google clone I made to train my DOM manipulation skills, as well as html/css'
     },
     {
         'name' : 'google clone',
         'url' : '#',
         'repo' : '#',
-        'display' : 'assets/google-clone.png',
+        'display' : 'assets/projects/google-clone.png',
         'description' : 'a google clone I made to train my DOM manipulation skills, as well as html/css'
     },
     {
         'name' : 'google clone',
         'url' : '#',
         'repo' : '#',
-        'display' : 'assets/google-clone.png',
+        'display' : 'assets/projects/google-clone.png',
         'description' : 'a google clone I made to train my DOM manipulation skills, as well as html/css'
     },
     {
         'name' : 'google clone',
         'url' : '#',
         'repo' : '#',
-        'display' : 'assets/google-clone.png',
-        'description' : 'a google clone I made to train my DOM manipulation skills, as well as html/css'
-    },
-    {
-        'name' : 'google clone',
-        'url' : '#',
-        'repo' : '#',
-        'display' : 'assets/google-clone.png',
-        'description' : 'a google clone I made to train my DOM manipulation skills, as well as html/css'
-    },
-    {
-        'name' : 'google clone',
-        'url' : '#',
-        'repo' : '#',
-        'display' : 'assets/google-clone.png',
+        'display' : 'assets/projects/google-clone.png',
         'description' : 'a google clone I made to train my DOM manipulation skills, as well as html/css'
     },
 ]
