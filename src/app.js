@@ -19,7 +19,35 @@ const projects = [
         'repo' : 'https://github.com/brtkev/Fiber-landing-page',
         'display' : 'assets/projects/fiber-page.png',
         'description' : 'this a really sweet landing page of fiber made with React, 100% reponsive'
-    }
+    },
+    {
+        'name' : 'coming-soon',
+        'url' : '#',
+        'repo' : '#',
+        'display' : 'assets/home-background.png',
+        'description' : 'placeholder sadly :/'
+    },
+    {
+        'name' : 'coming-soon',
+        'url' : '#',
+        'repo' : '#',
+        'display' : 'assets/home-background.png',
+        'description' : 'placeholder sadly :/'
+    },
+    {
+        'name' : 'coming-soon',
+        'url' : '#',
+        'repo' : '#',
+        'display' : 'assets/home-background.png',
+        'description' : 'placeholder sadly :/'
+    },
+    {
+        'name' : 'coming-soon',
+        'url' : '#',
+        'repo' : '#',
+        'display' : 'assets/home-background.png',
+        'description' : 'placeholder sadly :/'
+    },
 ]
 
 /**
@@ -77,8 +105,10 @@ const insertProjectItems = () => {
         text.firstElementChild.insertAdjacentText('afterbegin', project.name)
         let previewIcon = listItem.querySelector('.preview-icon');
         previewIcon.href = project.url;
+        if(project.url === '#') previewIcon.target = '_self';
         let codeIcon = listItem.querySelector('.code-icon');
         codeIcon.href = project.repo;
+        if(project.repo === '#') codeIcon.target = '_self';
 
         let image = listItem.querySelector('.project__image');
         image.src = project.display;
@@ -111,7 +141,6 @@ const navBarEventListeners = () => {
     homeButton.addEventListener('click', () => scrollToElement(document.getElementById('home'), 100))
     
     let aboutButton = document.getElementById('aboutButton');
-    console.log(window.innerHeight * 0.1)
     aboutButton.addEventListener('click', () => scrollToElement(document.getElementById('tech-container'), 100))
 
     let portfolioButton = document.getElementById('portfolioButton');
