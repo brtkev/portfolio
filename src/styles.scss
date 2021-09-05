@@ -24,7 +24,7 @@ $white-color-filter : invert(100%) sepia(3%) saturate(115%) hue-rotate(46deg) br
 $primary-color: #24a;
 $primary-color-focus: #28a;
 $nav-background: #080808;
-$home-background: #ddd;
+$home-background: #001;
 $project-background: #041b1f;
 $contact-background: #080808;
 
@@ -48,6 +48,22 @@ $contact-label-fs: calc(1em + .5vw);
 ::-webkit-scrollbar-thumb{
     // border-radius: 30px;
     background-color: $primary-color
+}
+
+
+/* === hover animations === */
+
+/* Fade */
+@mixin fade ($background-color, $color){
+	overflow: hidden;
+    transition: color, background-color .2s linear;
+
+	&:hover,
+	&:focus,
+	&:active {
+		background-color: $background-color;
+		color: $color;
+	}
 }
 
 /* === Navegation === */
@@ -85,27 +101,26 @@ $contact-label-fs: calc(1em + .5vw);
 
 .list__item{
     list-style: none;
-    
-    
-    &:first-child{
-        button{
-            margin-left: 0;
-        }
-    }
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
     &:not(:first-child){
         button{
             color: $white-letter-disabled;
         }
     }
     button{
-        color: $white-letter;
+        height: 80%;
+        padding: 0 calc(.5vw + .5em);
+        margin-right: calc(1vw + 1em);
+        color: $primary-color;
         font-size: $nav-font-size;
-        @extend %button-setup;
-        margin: 0 3vw;
         cursor: pointer;
-        &:hover{
-            color: $primary-color;
-        }
+        @extend %button-setup;
+        @include fade($primary-color, $white-letter);
+
     }
     
 }
