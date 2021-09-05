@@ -193,3 +193,37 @@ function getScrollDirection(height){
     if(window.scrollY > height ) return -1
     else return 1;
 }
+
+
+
+/* === scroll update navButtons === */ 
+
+const navHeight = document.getElementById('nav').offsetHeight;
+const homeHeight = getElementBodyOffsetHeight(document.getElementById('home')) - navHeight;
+const techContainerHeight = getElementBodyOffsetHeight(document.getElementById('tech-container')) - navHeight * 2;
+const projectHeight = getElementBodyOffsetHeight(document.getElementById('project')) - navHeight * 2;
+const contactHeight = getElementBodyOffsetHeight(document.getElementById('contact')) - navHeight;
+let currentActiveButton = document.getElementById('home');
+
+
+function onScrollChangeNavDisplay(ev, scrollPos = window.scrollY) {
+    if( scrollPos > homeHeight && scrollPos < techContainerHeight ){
+        activateNavButton('homeButton');
+    }else if(scrollPos > techContainerHeight && scrollPos < projectHeight){
+        activateNavButton('aboutButton');
+    }else if(scrollPos > projectHeight && scrollPos < contactHeight){
+        activateNavButton('portfolioButton');
+    }else if(scrollPos === document.body.scrollHeight - window.innerHeight){
+        activateNavButton('contactButton');
+    }
+
+}
+
+const activateNavButton = (id) => {
+    currentActiveButton.classList.toggle('active');
+    let button = document.getElementById(id);
+    button.classList.toggle('active');
+    currentActiveButton = button;
+}
+
+window.addEventListener('scroll', onScrollChangeNavDisplay);

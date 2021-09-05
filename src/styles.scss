@@ -22,7 +22,7 @@ $black-color-light: #444;
 $white-color: #ddd;
 $white-color-filter : invert(100%) sepia(3%) saturate(115%) hue-rotate(46deg) brightness(112%) contrast(87%);
 $primary-color: #24a;
-$primary-color-focus: #28a;
+$primary-color-focus: rgb(2, 50, 95);
 $nav-background: #080808;
 $home-background: #001;
 $project-background: #041b1f;
@@ -106,21 +106,19 @@ $contact-label-fs: calc(1em + .5vw);
     align-items: center;
     justify-content: center;
 
-    &:not(:first-child){
-        button{
-            color: $white-letter-disabled;
-        }
-    }
     button{
         height: 80%;
         padding: 0 calc(.5vw + .5em);
         margin-right: calc(1vw + 1em);
-        color: $primary-color;
+        color: $white-letter-disabled;
         font-size: $nav-font-size;
         cursor: pointer;
         @extend %button-setup;
         @include fade($primary-color, $white-letter);
+    }
 
+    & .active{
+        color: $primary-color;
     }
     
 }
