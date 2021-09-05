@@ -50,6 +50,18 @@ const projects = [
     },
 ]
 
+
+document.body.onload = () => {
+
+    window.addEventListener('scroll', onScrollChangeNavDisplay);
+    insertProjectItems();
+    addTooltip(document.querySelector('#project #title img'), 'Portfolio repo');
+
+    navBarEventListeners();
+
+}
+
+
 /**
  * 
  * @param {HTMLCollectionOf.<Element>|NodeListOf.<Element>} array 
@@ -126,15 +138,7 @@ const insertProjectItems = () => {
 }
 
 
-document.body.onload = () => {
-    
-    insertProjectItems();
-    let projectTitleImage = document.querySelector('#project #title img');
-    addTooltip(projectTitleImage, 'Portfolio repo');
 
-    navBarEventListeners();
-
-}
 
 const navBarEventListeners = () => {
     let homeButton = document.getElementById('homeButton');
@@ -194,8 +198,6 @@ function getScrollDirection(height){
     else return 1;
 }
 
-
-
 /* === scroll update navButtons === */ 
 
 const navHeight = document.getElementById('nav').offsetHeight;
@@ -204,7 +206,6 @@ const techContainerHeight = getElementBodyOffsetHeight(document.getElementById('
 const projectHeight = getElementBodyOffsetHeight(document.getElementById('project')) - navHeight * 2;
 const contactHeight = getElementBodyOffsetHeight(document.getElementById('contact')) - navHeight;
 let currentActiveButton = document.getElementById('home');
-
 
 function onScrollChangeNavDisplay(ev, scrollPos = window.scrollY) {
     if( scrollPos > homeHeight && scrollPos < techContainerHeight ){
@@ -216,7 +217,7 @@ function onScrollChangeNavDisplay(ev, scrollPos = window.scrollY) {
     }else if(scrollPos === document.body.scrollHeight - window.innerHeight){
         activateNavButton('contactButton');
     }
-
+    
 }
 
 const activateNavButton = (id) => {
@@ -225,5 +226,3 @@ const activateNavButton = (id) => {
     button.classList.toggle('active');
     currentActiveButton = button;
 }
-
-window.addEventListener('scroll', onScrollChangeNavDisplay);

@@ -2,7 +2,7 @@
 - [X] home
 - [X] portfolio
 - [X] contact
-- [ ] update states of navegation's buttons when scrolling
+- [X] update states of navegation's buttons when scrolling
 # portfolio
 front-end developer [porfolio](https://brtkev.github.io/portfolio/)
 
