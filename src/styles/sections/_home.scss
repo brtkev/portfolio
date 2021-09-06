@@ -47,7 +47,7 @@
         align-items: center;
 
         & #title{
-            font-size: $home__about-font-size;
+            font-size: $about-title-font-size;
             text-decoration: underline;
             margin-bottom: 5vh;
             color: $white-letter;
@@ -58,6 +58,7 @@
             align-self: center;
             font-size: $about-font-size;
             color: $white-letter-disabled;
+            padding: 0 calc(1em + 1vw);
         }
     }
 
@@ -66,11 +67,13 @@
         margin-top: 15vh;
         margin-bottom: 15vh;
         display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
         
         & .tech-item{
             position: relative;
             list-style: none;
-            margin: 0 calc(1em + 1vw);
+            margin: calc(1em + 1vw) calc(1em + 1vw);
             display: flex;
             align-items: center;
             transition: all .3s linear;
@@ -95,7 +98,7 @@
 
 @media screen and (max-width: 1024px){
     #home #about .about-text{
-        font-size: $about-fs-responsive;
+        
     }
 }
 
@@ -104,18 +107,10 @@
         margin-top: -35vh;
         & .home__title-text{
             color: $white-letter;
-            font-size: $home-title-fs-responsive;
         }
 
         & #tech-container{
-            display: grid;
-            grid-template-columns: max-content max-content;
-            grid-template-rows: max-content max-content;
             margin: 7vh 0;
-
-            & .tech-item{
-                margin: calc(1em + 1vw) calc(1em + 1vw);
-            }
         }
     }
 }
