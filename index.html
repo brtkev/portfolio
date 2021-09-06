@@ -11,13 +11,19 @@
 </head>
 
 <body>
-    <nav id="nav">
+    <nav id="nav" class="nav-hidden">
         <ul id="nav__list">
             <li class="list__item"><button class="list__item__button" id="homeButton">Home</button></li>
             <li class="list__item"><button class="list__item__button" id="aboutButton">About</button></li>
             <li class="list__item"><button class="list__item__button" id="portfolioButton">Portfolio</button></li>
             <li class="list__item"><button class="list__item__button" id="contactButton">Contact</button></li>
         </ul>
+        <button id="menu-responsive-button">
+            <img class="open" src="/assets/menu-icon.svg" alt="menu icon" >
+            <img class="close" src="/assets/close-icon.svg" alt="close icon" >
+        </button>
+        <!-- <button id="menu-responsive-button"><img src="/assets/menu-icon.svg" alt="menu button" ></button> -->
+        
     </nav>
     <section id="home">
         <img id="home-background" src="./assets/home-background.png" alt="background">
@@ -101,6 +107,7 @@
         </div>
     </section>
 
+    <script src="src/app/navBar.js"></script>
     <script src="src/app.js"></script>
 </body>
 

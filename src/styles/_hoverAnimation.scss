@@ -1,0 +1,59 @@
+
+/* Fade */
+@mixin fade ($background-color, $color){
+	overflow: hidden;
+    transition: color, background-color .2s linear;
+
+	&:hover,
+	&:focus,
+	&:active {
+		background-color: $background-color;
+		color: $color;
+	}
+}
+
+@mixin underline-border($width, $color) {
+    position:relative;
+    overflow: hidden;
+    &::before{
+        content:'';
+        position:absolute;
+        width:calc(100% + #{$width * 2});
+        height: $width;
+        background-color: $color;
+        bottom: 0;
+    }
+}
+
+@mixin border-from-left($width, $color, $duration){
+    @include underline-border($width, $color);
+    &::before{
+        right: 100%;
+        transition: right $duration linear;
+    }
+    &:hover::before{
+        right: 0;
+    }
+}
+
+@mixin border-from-right($width, $color, $duration) {
+    @include underline-border($width, $color);
+    &::before{
+        left: 100%;
+        transition: left $duration linear;
+    }
+    &:hover::before{
+        left: 0;
+    }
+}
+
+@mixin border-from-center($width, $color, $duration){
+    @include underline-border($width, $color);
+    &::before{
+        transform: scaleX(0);
+        transition: all $duration ease-in-out;
+    }
+    &:hover::before{
+        transform: scaleX(1);
+    }
+}

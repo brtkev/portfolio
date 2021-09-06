@@ -1,0 +1,25 @@
+$x-padding: 10vw;
+$y-padding: 20vh;
+
+$black-color: #111;
+$black-color-filter: invert(0%) sepia(0%) saturate(14%) hue-rotate(213deg) brightness(86%) contrast(73%);
+$black-color-light: #444;
+$white-color: #ddd;
+$white-color-filter : invert(100%) sepia(3%) saturate(115%) hue-rotate(46deg) brightness(112%) contrast(87%);
+$primary-color: #24a;
+$primary-color-focus: rgb(2, 50, 95);
+$nav-background: #080808;
+$home-background: #001;
+$project-background: #041b1f;
+$contact-background: #080808;
+
+$white-letter: #fff;
+$white-letter-disabled: #888;
+
+$nav-font-size: calc(15px + .5vw);
+$home__title-font-size: calc(1.5em + 1vw);
+$home-title-fs-responsive: calc(1em + 1vw);
+$home__about-font-size: calc(1.5em + 1vw);
+$about-font-size: calc(.5em + 1vw);
+$about-fs-responsive: 1.5vw;
+$contact-label-fs: calc(1em + .5vw);

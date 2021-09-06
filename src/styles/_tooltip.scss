@@ -1,0 +1,16 @@
+@use './variables';
+
+.tooltip{
+    position: absolute;
+    width: max-content;
+    max-width: 15vw;
+    height: max-content;
+    padding: 15px;
+    font-size: calc(10px + .5vw);
+    background-color: variables.$black-color;
+    color: variables.$white-letter;
+    border-radius: 5px;
+    z-index: 10001;
+
+    border: 1px solid variables.$black-color-light;
+}

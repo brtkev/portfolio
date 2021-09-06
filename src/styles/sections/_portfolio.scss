@@ -1,0 +1,116 @@
+@use '../variables' as *;
+@use '../hoverAnimation';
+@use 'sass:math';
+
+$project-image-size : 10vw;
+
+#project{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: math.div($y-padding, 2) $x-padding;
+    background-color: $project-background;
+    & #title{
+        display: flex;
+        align-items: center;
+        margin-bottom: math.div($y-padding, 2);
+        h1{
+            font-size: $home__title-font-size;
+            color:$white-letter;
+            margin-right: calc(1vw + 1em);
+        }
+    
+        & img{
+            height: calc(calc(1.5em + 1vw) * 2);
+            filter: $white-color-filter;
+            cursor: pointer;
+            transition: all .3s linear;
+
+            &:hover{
+                transform: scale(1.1);
+            }
+        }
+    }
+
+    
+    &__grid-box{
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-auto-rows: 1fr;
+        row-gap: 20px;
+        column-gap: 40px;
+        width: 100%;
+        // justify-items: center;
+
+        & .project__grid-item{
+            list-style: none;
+            position: relative;
+            box-shadow: 0px 0px 3px 1px $primary-color;
+            transition: all 1s linear;
+            &:hover > .project__image-cover{
+                visibility: visible;
+            }
+
+            & .project__image-cover{
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                top: 0;
+                left: 0;
+                background-color: #222a;
+                color: #ddd;
+                visibility: hidden;
+
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+
+                & .link-box{
+                    width: 50%;
+                    display: flex;
+                    justify-content: space-evenly;
+                    margin-top: 5%;
+
+                    & .preview-icon, & .code-icon{
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        width: 20%;
+                        & img{
+                            cursor: pointer;
+                            width: 100%;
+                            filter: $white-color-filter;                        
+                        }
+                    }
+                    & .preview-icon{
+                        @include hoverAnimation.border-from-right(2px, $white-color, .5s);
+                    }
+                    
+                    & .code-icon{
+                        @include hoverAnimation.border-from-left(2px, $white-color, .5s);
+                    }
+                }
+
+                & .text-box{
+                    grid-column: 1 / 3;
+                    display: flex;
+                    align-items: flex-end;
+                    & p{
+                        color: $white-color;
+                        text-decoration: underline;
+                        font-size: $contact-label-fs;
+                    }
+                }
+            }
+
+            & .project__image{
+                width: 100%;
+                height: 100%;
+                object-fit: fill;
+            }
+        }
+    }
+}
