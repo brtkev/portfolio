@@ -46,19 +46,17 @@ const toggleNavBarButtons = () => {
     }
 }
 
-const fromNavBar = () => {
-    console.log("from navbarjs");
-}
 
 
 const openResponsiveNav = (ev) => {
     /** @type {Element} */
-    let nav = ev.target.parentElement.parentElement;
-    nav.classList.toggle('nav-hidden');
-    
+    ev.target.parentElement.parentElement.classList.toggle('nav-hidden');
+    changeDisplayedIcon(ev);
+}
+
+const changeDisplayedIcon = (ev) => {
     /** @type {Element} */
     let button = ev.target.parentElement;
-    console.log(button.children);
     [...button.children].map( img => {
         img.classList.toggle('move-left');
     })
