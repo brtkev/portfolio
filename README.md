@@ -4,7 +4,7 @@
 - [X] contact
 - [X] update states of navegation's buttons when scrolling
 - [X] Mobile/Responsive
-- [ ] responisve tooltips
+- [X] responsive & global tooltips
 
 # portfolio
 front-end developer [porfolio](https://brtkev.github.io/portfolio/)

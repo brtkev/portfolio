@@ -100,7 +100,6 @@ const addTooltip = (element, msg) => {
     });
 
     element.addEventListener('mouseleave', (ev) => {
-        console.log(tooltip)
         if(tooltip) tooltip.remove();
             
     });
