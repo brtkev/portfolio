@@ -182,5 +182,3 @@ const activateNavButton = (id) => {
     button.classList.toggle('active');
     currentActiveButton = button;
 }
-
-

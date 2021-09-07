@@ -64,12 +64,14 @@ $project-image-size : 10vw;
                 left: 0;
                 background-color: #222a;
                 color: #ddd;
-                visibility: hidden;
 
+                visibility: hidden;
                 display: flex;
                 flex-direction: column;
                 justify-content: center;
                 align-items: center;
+
+                transition: visibility .1s linear;
 
                 & .link-box{
                     width: 50%;
