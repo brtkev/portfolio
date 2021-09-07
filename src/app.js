@@ -84,17 +84,15 @@ const addEventListenerToArray = ( array, type, callable) => {
  * @param {string} msg 
  */
 const addTooltip = (element, msg) => {
+    let tooltip = document.createElement('div');
+    tooltip.classList.add('tooltip');
+    tooltip.insertAdjacentHTML('afterbegin', `<p>${msg}</p>`);
+
     element.addEventListener('mouseenter', (ev) => {
-
-        let tooltip = document.createElement('div');
-        tooltip.classList.add('tooltip');
-        tooltip.insertAdjacentHTML('afterbegin', `<p>${msg}</p>`);
-
-        tooltip.style.left = element.offsetLeft + element.offsetWidth + 'px';
-        tooltip.style.top = element.offsetTop + element.offsetHeight + 'px';
-
+        tooltip.style.top = getElementBodyOffsetHeight(element) + element.offsetHeight + 'px';
+        tooltip.style.left = getElementBodyOffsetWidth(element) + element.offsetHeight + 'px';
         tooltip.style.visibility = "hidden";
-        element.insertAdjacentElement('beforebegin', tooltip);
+        document.body.insertAdjacentElement('afterbegin', tooltip);
 
         setTimeout(() => {
             tooltip.style.visibility = "visible";
@@ -102,8 +100,7 @@ const addTooltip = (element, msg) => {
     });
 
     element.addEventListener('mouseleave', (ev) => {
-        
-        let tooltip = element.parentElement.querySelector(".tooltip");
+        console.log(tooltip)
         if(tooltip) tooltip.remove();
             
     });

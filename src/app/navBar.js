@@ -32,6 +32,7 @@ const navBarEventListeners = () => {
 }
 
 const getElementBodyOffsetHeight = (element) => element.getBoundingClientRect().top + document.documentElement.scrollTop;
+const getElementBodyOffsetWidth = (element) => element.getBoundingClientRect().left; + document.documentElement.scrollLeft;
 
 const intervalSpeed = 15;
 
