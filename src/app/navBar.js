@@ -1,4 +1,18 @@
 
+const getScrollSteps = scrollDuration => (scrollDuration / intervalSpeed);
+const getScrollStepSize = (height, direction, scrollSteps) => direction * Math.abs(height - window.scrollY) / scrollSteps;
+
+const validateHeight = (height) => {
+    if(height === 0) return 1 // cannot be 0
+    else if(height > document.body.scrollHeight - window.innerHeight)
+        return document.body.scrollHeight - window.innerHeight; //cannot be higher than
+    else return height 
+}
+
+function getScrollDirection(height){
+    if(window.scrollY > height ) return -1
+    else return 1;
+}
 
 const navBarEventListeners = () => {
     let homeButton = document.getElementById('homeButton');
@@ -22,13 +36,18 @@ const getElementBodyOffsetHeight = (element) => element.getBoundingClientRect().
 const intervalSpeed = 15;
 
 const scrollToElement = (element, scrollDuration) => {
-    const height = validateHeight(getElementBodyOffsetHeight(element) - document.getElementById('nav').offsetHeight);
+    const height = validateHeight(getElementBodyOffsetHeight(element) - getHeightAdjusment());
     const scrollSteps = getScrollSteps(scrollDuration)
     const scrollStepSize = getScrollStepSize(height, getScrollDirection(height), scrollSteps);
 
     toggleNavBarButtons();
     scrollInterval(scrollStepSize, scrollSteps);
     toggleNavBarButtons();
+}
+
+const getHeightAdjusment = () => {
+    let extraHeight = document.getElementById('nav').offsetHeight;
+    return window.innerWidth > 425 ? extraHeight : 0; 
 }
 
 const scrollInterval = (scrollStepSize, scrollSteps ) =>{

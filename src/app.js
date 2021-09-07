@@ -54,11 +54,12 @@ const projects = [
 document.body.onload = () => {
 
     window.addEventListener('scroll', onScrollChangeNavDisplay);
+    onScrollChangeNavDisplay(undefined);
+
     insertProjectItems();
     addTooltip(document.querySelector('#project #title img'), 'Portfolio repo');
 
     navBarEventListeners();
-    onScrollChangeNavDisplay(undefined);
 
 }
 
@@ -139,46 +140,3 @@ const insertProjectItems = () => {
 }
 
 
-const getScrollSteps = scrollDuration => (scrollDuration / intervalSpeed);
-const getScrollStepSize = (height, direction, scrollSteps) => direction * Math.abs(height - window.scrollY) / scrollSteps;
-
-const validateHeight = (height) => {
-    if(height === 0) return 1 // cannot be 0
-    else if(height > document.body.scrollHeight - window.innerHeight)
-        return document.body.scrollHeight - window.innerHeight; //cannot be higher than
-    else return height 
-}
-
-function getScrollDirection(height){
-    if(window.scrollY > height ) return -1
-    else return 1;
-}
-
-/* === scroll update navButtons === */ 
-
-const navHeight = document.getElementById('nav').offsetHeight;
-const homeHeight = getElementBodyOffsetHeight(document.getElementById('home')) - navHeight;
-const techContainerHeight = getElementBodyOffsetHeight(document.getElementById('tech-container')) - navHeight * 2;
-const projectHeight = getElementBodyOffsetHeight(document.getElementById('project')) - navHeight * 2;
-const contactHeight = getElementBodyOffsetHeight(document.getElementById('contact')) - navHeight;
-let currentActiveButton = document.getElementById('home');
-
-function onScrollChangeNavDisplay(ev, scrollPos = window.scrollY) {
-    if( scrollPos > homeHeight && scrollPos < techContainerHeight ){
-        activateNavButton('homeButton');
-    }else if(scrollPos > techContainerHeight && scrollPos < projectHeight){
-        activateNavButton('aboutButton');
-    }else if(scrollPos > projectHeight && scrollPos < contactHeight){
-        activateNavButton('portfolioButton');
-    }else if(scrollPos === document.body.scrollHeight - window.innerHeight){
-        activateNavButton('contactButton');
-    }
-    
-}
-
-const activateNavButton = (id) => {
-    currentActiveButton.classList.toggle('active');
-    let button = document.getElementById(id);
-    button.classList.toggle('active');
-    currentActiveButton = button;
-}
