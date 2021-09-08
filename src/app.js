@@ -21,11 +21,11 @@ const projects = [
         'description' : 'this a really sweet landing page of fiber made with React, 100% reponsive'
     },
     {
-        'name' : 'coming-soon',
-        'url' : '#',
-        'repo' : '#',
-        'display' : 'assets/home-background.png',
-        'description' : 'placeholder sadly :/'
+        'name' : 'menu dropdown',
+        'url' : 'https://brtkev.github.io/JsMin/menu-dropdown/',
+        'repo' : 'https://github.com/brtkev/JsMin/tree/main/menu-dropdown',
+        'display' : 'assets/projects/menu-dropdown.png',
+        'description' : 'a cool styled dropdown menu for a nav bar, using scss and js'
     },
     {
         'name' : 'coming-soon',
