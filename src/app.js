@@ -1,5 +1,12 @@
 const projects = [
     {
+        'name' : 'start page',
+        'url' : 'https://brtkev.github.io/start-page/',
+        'repo' : 'https://github.com/brtkev/start-page',
+        'display' : 'assets/projects/start-page.png',
+        'description' : 'a cool darkish start page for web browsers, for personal use, made with react.'
+    },
+    {
         'name' : 'google clone',
         'url' : 'https://brtkev.github.io/JsMin/google-clone/',
         'repo' : 'https://github.com/brtkev/JsMin/tree/main/google-clone',
@@ -26,13 +33,6 @@ const projects = [
         'repo' : 'https://github.com/brtkev/JsMin/tree/main/menu-dropdown',
         'display' : 'assets/projects/menu-dropdown.png',
         'description' : 'a cool styled dropdown menu for a nav bar, using scss and js'
-    },
-    {
-        'name' : 'coming-soon',
-        'url' : '#',
-        'repo' : '#',
-        'display' : 'assets/home-background.png',
-        'description' : 'placeholder sadly :/'
     },
     {
         'name' : 'coming-soon',

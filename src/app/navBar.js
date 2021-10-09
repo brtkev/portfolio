@@ -31,8 +31,10 @@ const navBarEventListeners = () => {
     menuResponsiveButton.addEventListener('click', openResponsiveNav)
 }
 
+// module.exports = navBarEventListeners;
+
 const getElementBodyOffsetHeight = (element) => element.getBoundingClientRect().top + document.documentElement.scrollTop;
-const getElementBodyOffsetWidth = (element) => element.getBoundingClientRect().left; + document.documentElement.scrollLeft;
+const getElementBodyOffsetWidth = (element) => element.getBoundingClientRect().left + document.documentElement.scrollLeft;
 
 const intervalSpeed = 15;
 

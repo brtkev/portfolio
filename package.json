@@ -4,8 +4,8 @@
   "description": "front-end portfolio",
   "main": "index.html",
   "scripts": {
-    "sass" : "sass ./src/styles.scss:./dist/styles.min.css --no-source-map -s compressed --watch",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "sass": "sass ./src/styles.scss:./dist/styles.min.css --no-source-map -s compressed --watch",
+    "test": "jest"
   },
   "repository": {
     "type": "git",
@@ -16,5 +16,11 @@
   "bugs": {
     "url": "https://github.com/brtkev/portfolio/issues"
   },
-  "homepage": "https://brtkev.github.io/portfolio/"
+  "homepage": "https://brtkev.github.io/portfolio/",
+  "devDependencies": {
+    "jest": "^27.1.1"
+  },
+  "jest":{
+    "testEnvironment" : "jsdom"
+  }
 }
