@@ -1,41 +1,48 @@
 import styles from './index.module.css'
 
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
-export default function Navegation({activeButton}) {
-
+export default function Navegation() {
+	let [activeHash, setActiveHash] = useState(window.location.hash);
     useEffect(()=> {
         let lis = document.getElementsByClassName(styles.li);
         for (let i = 0; i < lis.length; i++) {
             let li = lis.item(i);
-            if (li.firstChild.textContent === activeButton){
+            if (li.firstChild.hash === activeHash){
                 li.classList.add(styles.active);
             }else{
                 li.classList.remove(styles.active);
 
             }
         }
-    }, [activeButton])
+    }, [activeHash])
+
+    const hashLinkHandle = (ev) => {
+        setActiveHash(ev.target.hash)
+        return ev
+    }
+
+    const NavLi = ({name}) => 
+        <li className={styles.li} >
+            <a className={styles.link} onClick={hashLinkHandle} href={`#${name}`}>
+                {name.replace(/^\w/, (c) => c.toUpperCase())} {/* capitalize */}
+            </a>
+        </li>;
 
     return(
         <nav className={styles.container} >
             <ul className={styles.ul} >
-                <li className={`${styles.li} ${styles.active}`} >
-                    <a className={styles.link} href="#">Home</a>
-                </li>
-                <li className={styles.li} >
-                    <a className={styles.link} href="#">Services</a>
-                </li>
-                <li className={styles.li} >
-                    <a className={styles.link} href="#">Locations</a>
-                </li>
-                <li className={styles.li} >
-                    <a className={styles.link} href="#">About</a>
-                </li>
-                <li className={styles.li} >
-                    <a className={styles.link} href="#">Contact</a>
-                </li>
+                <NavLi name="home" />
+                <NavLi name="services" />
+                <NavLi name="locations" />
+                <NavLi name="about" />
+                <NavLi name="contact" />
             </ul>
         </nav>
     );
 };
+
+
+
+ 
+
