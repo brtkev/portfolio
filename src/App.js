@@ -1,7 +1,6 @@
 import styles from './App.module.css'
 import Navegation from './components/navegation';
-
-import { useState, useEffect } from 'react';
+import Home from './components/home';
 
 const App = () => {
 
@@ -9,7 +8,8 @@ const App = () => {
 		<div>
 			
 			<Navegation />
-			<h1 className={styles.container} id={'services'} >Hello World!</h1>
+			<Home></Home>
+			{/* <h1 className={styles.container} id={'services'} >Hello World!</h1> */}
 
 		</div>
 	);

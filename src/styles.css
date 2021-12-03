@@ -7,13 +7,15 @@
 
 
 body{
-  background: #bbb;
+  --background:  #B8F0E3;
+  --lightBackground: #DCF9E9;
+  --redish: #FC1E56;
+  --d: #BEA7AE;
+  --f: #B8B8B8;
+  --lowRedish: #FC7CA4;
+
+
+  background: var(--a);
   min-height: 100vh;
-/* #B8F0E3
-#DCF9E9
-#FC1E56
-#BEA7AE
-#B8B8B8
-#FC7CA4 */
 }
 
