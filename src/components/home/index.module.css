@@ -1,13 +1,58 @@
 
 .container{
-    
+    width: 100%;
+    height: max-content;
+    display: flex;
+    justify-content: center;
+    /* align-items: center; */
+    padding: 10vh 0;
+
+
 }
 
 .slideContainer{
-    height: 600px;
-    width: 800px;
+    width: 80%;
+    min-height: 600px;
+    height: 80vh;
+    /* min-height: 500px;
+    height: 50vh; */
+    
+    position: relative;
 }
 
-.imageContainer{
-    
+
+.slideContainer > .button{
+    z-index: 2;
+    position: absolute; 
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    background-color: #0005;
+    color: #fff;
+    padding: 0 .25rem .25rem .25rem;
+    font-size: 4rem;
+    cursor: pointer;
+}
+
+.slideContainer > .button[data-button-left]{
+    left: 1rem;
+}
+.slideContainer > .button[data-button-right]{
+    right: 1rem;
+}
+
+.slideImage{
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    object-fit: cover;
+    opacity: 0;
+    transition: 200ms opacity ease-in-out;
+    transition-delay: 200ms;
+}
+
+.active{
+    opacity: 1;
+    transition-delay: 0ms;
 }

@@ -12,11 +12,16 @@ const jsRules = {
   }
 
 const cssRules = {
-    test: /\.css$/,
-    use: ['style-loader', 'css-loader','postcss-loader']
-  }
+  test: /\.css$/,
+  use: ['style-loader', 'css-loader','postcss-loader']
+}
 
-const rules = [jsRules, cssRules]
+const assetRule = {
+  test: /\.png$/,
+  type: 'asset'      
+}
+
+const rules = [jsRules, cssRules, assetRule]
 module.exports = (env, argv) => {
   const {mode} = argv;
   const isProduction = mode === 'production';
