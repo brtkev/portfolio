@@ -16,6 +16,7 @@ const useSliderIndex = (initialValue ) => {
     useEffect( () => {
         if(imagesArray === undefined) imagesArray = [...document.getElementsByClassName(styles.slideImage)];
         imagesArray[sliderIndex].classList.add(styles.active);
+        
     }, [sliderIndex])
 
     const setNewValue = (value) => {
@@ -32,10 +33,10 @@ const useSliderIndex = (initialValue ) => {
 export default function Home(props) {
     let sliderIndex, setSliderIndex;
     [sliderIndex, setSliderIndex] = useSliderIndex(0);
-    // useEffect(() => {
-    //     // document.querySelector(`.${styles.slideImage}`).classList.add(styles.active)
-    // }, [])
 
+    useEffect(() => {
+        setInterval(() => setSliderIndex(1), 3000)
+    }, [])
 
     const buttonHandle = (ev) => {
         setSliderIndex(ev.target.dataset.buttonRight == 'true' ? 1 : -1);
@@ -43,13 +44,16 @@ export default function Home(props) {
     
     return (
         <div className={styles.container} >
+
+            <h1 className={styles.title} >Hello World! :)</h1>
             <div className={styles.slideContainer} >
-            <button onClick={buttonHandle} className={styles.button} data-button-left >&#10232;</button>
                 <img className={styles.slideImage} src={project1} alt="start page" />
-                <img className={styles.slideImage} src={project2} alt="start page" />
-                <img className={styles.slideImage} src={project3} alt="start page" />
-                <img className={styles.slideImage} src={project4} alt="start page" />
-            <button onClick={buttonHandle} className={styles.button} data-button-right >&#10233;</button>
+                <img className={styles.slideImage} src={project2} alt="google clone" />
+                <img className={styles.slideImage} src={project3} alt="menu dropdown" />
+                <img className={styles.slideImage} src={project4} alt="fiber page" />
+
+                <button onClick={buttonHandle} className={styles.button} data-button-left >&#10232;</button>
+                <button onClick={buttonHandle} className={styles.button} data-button-right >&#10233;</button>
             </div>
         </div>
     )

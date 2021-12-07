@@ -3,11 +3,18 @@
     width: 100%;
     height: max-content;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    /* justify-content: center; */
+    align-items: center;
     /* align-items: center; */
     padding: 10vh 0;
 
 
+}
+
+.title{
+    color: var(--redish);
+    margin-bottom: 2rem;
 }
 
 .slideContainer{
@@ -29,7 +36,7 @@
     background: none;
     border: none;
     background-color: #0005;
-    color: #fff;
+    color: var(--redish);
     padding: 0 .25rem .25rem .25rem;
     font-size: 4rem;
     cursor: pointer;
