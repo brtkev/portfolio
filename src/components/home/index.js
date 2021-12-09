@@ -1,12 +1,12 @@
 import styles from './index.module.css';
-
-import project1 from '../../../public/assets/projects/start-page.png';
-import project2 from '../../../public/assets/projects/google-clone.png';
-import project3 from '../../../public/assets/projects/menu-dropdown.png';
-import project4 from '../../../public/assets/projects/fiber-page.png';
+import { projects } from '../images';
 
 import {useEffect, useState} from 'react';
 
+const imageSliders = [];
+for (let name in projects){
+    imageSliders.push(<img className={styles.slideImage} src={projects[name]} alt={name}  key={name}  />)
+}
 
 const useSliderIndex = (initialValue ) => {
 
@@ -31,27 +31,17 @@ const useSliderIndex = (initialValue ) => {
 }
 
 export default function Home(props) {
-    let sliderIndex, setSliderIndex;
-    [sliderIndex, setSliderIndex] = useSliderIndex(0);
+    let [sliderIndex, setSliderIndex] = useSliderIndex(0);
 
-    useEffect(() => {
-        setInterval(() => setSliderIndex(1), 3000)
-    }, [])
+    useEffect(() => setInterval(() => setSliderIndex(1), 3000), [])
 
-    const buttonHandle = (ev) => {
-        setSliderIndex(ev.target.dataset.buttonRight == 'true' ? 1 : -1);
-    }
+    const buttonHandle = (ev) => setSliderIndex(ev.target.dataset.buttonRight == 'true' ? 1 : -1);
     
     return (
         <div className={styles.container} >
 
-            <h1 className={styles.title} >Hello World! :)</h1>
             <div className={styles.slideContainer} >
-                <img className={styles.slideImage} src={project1} alt="start page" />
-                <img className={styles.slideImage} src={project2} alt="google clone" />
-                <img className={styles.slideImage} src={project3} alt="menu dropdown" />
-                <img className={styles.slideImage} src={project4} alt="fiber page" />
-
+                {imageSliders}
                 <button onClick={buttonHandle} className={styles.button} data-button-left >&#10232;</button>
                 <button onClick={buttonHandle} className={styles.button} data-button-right >&#10233;</button>
             </div>

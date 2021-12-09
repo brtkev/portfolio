@@ -12,9 +12,12 @@ export default function Navegation() {
                 li.classList.add(styles.active);
             }else{
                 li.classList.remove(styles.active);
-
             }
         }
+        if(activeHash === ''){
+            lis.item(0).classList.add(styles.active);
+        }
+        
     }, [activeHash])
 
     const hashLinkHandle = (ev) => {

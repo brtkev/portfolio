@@ -1,0 +1,19 @@
+
+.container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10rem 10vw;
+
+}
+
+.grid{
+    
+}
+
+.gridItem{
+    margin: 0 6rem;
+    width: 100px;
+    height: 80px;
+    border: 1px solid black;
+}

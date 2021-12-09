@@ -1,6 +1,8 @@
 import styles from './App.module.css'
 import Navegation from './components/navegation';
 import Home from './components/home';
+import About from './components/about';
+import Galery from './components/galery';
 
 const App = () => {
 
@@ -8,9 +10,9 @@ const App = () => {
 		<div>
 			
 			<Navegation />
-			<Home></Home>
-			{/* <h1 className={styles.container} id={'services'} >Hello World!</h1> */}
-
+			<About />
+			<Home />
+			<Galery />
 		</div>
 	);
 }
